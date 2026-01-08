@@ -1,0 +1,512 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIÁVEIS */
+:root {
+  --bg: #0f0f0f;
+  --fg: #f5f5f5;
+  --muted: #9a9a9a;
+  --accent: #8b1e3f;
+}
+
+/* GLOBAL */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Montserrat', sans-serif;
+  scroll-snap-type: y mandatory;
+}
+
+/* HERO COM VIDEO */
+.hero-video {
+  position: relative;
+  height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* VÍDEO */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: grayscale(100%);
+}
+
+/* OVERLAY */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 2;
+}
+
+/* CONTEÚDO */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 8vw, 96px);
+  letter-spacing: 6px;
+}
+
+.hero-content p {
+  margin-top: 20px;
+  color: var(--muted);
+}
+
+/* MOBILE: desativa vídeo */
+@media (max-width: 768px) {
+  .hero-bg {
+    display: none;
+  }
+
+  .hero-video {
+    height: 100vh;
+    background-image: url('../assets/images/hero-fallback.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    scroll-snap-type: none;
+  }
+}
+
+a {
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  padding: 0 40px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  height: 60px;
+  background: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  transition: font-size 0.3s ease;
+}
+
+.header.scrolled .logo {
+  font-size: 22px;
+}
+
+nav a {
+  margin-left: 24px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* MAIN TRANSITION (SPA FEEL) */
+main {
+  padding-top: 80px;
+  transition: opacity 0.4s ease;
+}
+
+main.fade-out {
+  opacity: 0;
+}
+
+/* SEÇÕES */
+.intro,
+.section {
+  scroll-snap-align: start;
+}
+
+.intro {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.intro h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 96px;
+  letter-spacing: 6px;
+}
+
+.intro p {
+  margin-top: 20px;
+  color: var(--muted);
+}
+
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px;
+}
+
+.section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  margin-bottom: 40px;
+}
+
+/* AGENDA */
+.agenda-list {
+  list-style: none;
+}
+
+.agenda-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.agenda-date {
+  width: 80px;
+  color: var(--muted);
+}
+
+.agenda-info span {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.agenda-item a {
+  margin-left: auto;
+  font-size: 14px;
+}
+
+.agenda-item.highlight {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+}
+
+
+/* OUÇA */
+.platforms a {
+  margin-right: 30px;
+  font-size: 18px;
+}
+
+/* VIDEOS */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.video-card {
+  aspect-ratio: 16 / 9;
+  background: #000;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.video-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.play-overlay::before {
+  content: '▶';
+  font-size: 42px;
+}
+
+/* ANIMAÇÕES ON SCROLL */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-right {
+  transform: translateX(40px);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.15s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.3s;
+}
+
+/* SOBRE / ESSE SOU EU */
+.sobre-section {
+  max-width: 1100px;
+}
+
+.sobre-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  margin-bottom: 60px;
+}
+
+/* GRID */
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* FOTO */
+.sobre-foto img {
+  -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  filter: grayscale(100%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* TEXTO */
+.sobre-texto p {
+  margin-bottom: 18px;
+  line-height: 1.7;
+  color: var(--fg);
+}
+
+/* FRASE DE IMPACTO */
+.impact-phrase {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+/* DIVIDER */
+.divider {
+  width: 80px;
+  height: 2px;
+  background: var(--accent);
+  margin: 24px 0 30px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .intro h1 {
+    font-size: 56px;
+  }
+
+  .section {
+    width: 100%;
+    padding: 70px 20px;
+  }
+
+  .section h2 {
+    font-size: 32px;
+  }
+
+  .sobre-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .impact-phrase {
+    font-size: 20px;
+  }
+
+  .videos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.developerby {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* CONTATO */
+.contact-email {
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+
+.contact-email span {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+/* SOCIAL LINKS */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.social:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* ÍCONES */
+.icon {
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* BRAND COLORS ON HOVER */
+.social.instagram:hover {
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+}
+
+.social.tiktok:hover {
+  background: #000;
+}
+
+.social.facebook:hover {
+  background: #1877f2;
+}
+
+.social.whatsapp:hover {
+  background: #25d366;
+}
+
+/* ICON FILES */
+.instagram-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
+}
+
+.tiktok-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg');
+  filter: invert(1);
+}
+
+.facebook-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg');
+}
+
+.whatsapp-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg');
+}
+
+/* FOOTER */
+.site-footer {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 14px;
+}
+
+.site-footer .developerby {
+  display: block;
+  margin-top: 12px;
+}
+
+/* SPOTIFY EMBED */
+
+.spotify-embed iframe {
+  width: 100%;
+  background: #000;
+  box-shadow: 0 12px 30px #8b1e3f33;
+}

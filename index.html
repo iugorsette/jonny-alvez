@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jonny Alvez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- favico -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">Jonny Alvez</div>
+      <nav>
+        <a href="#agenda">Agenda</a>
+        <a href="#ouca">Ouça</a>
+        <a href="#videos">Vídeos</a>
+        <a href="#sobre">Imprensa</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HOME -->
+      <section class="intro hero-video reveal">
+        <video class="hero-bg" autoplay muted loop playsinline>
+          <source src="assets/videos/hero.mp4" type="video/mp4" />
+        </video>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+          <h1>Jonny Alvez</h1>
+          <p>Cantor • Pop Rock • Performance</p>
+        </div>
+      </section>
+
+      <!-- AGENDA -->
+      <section id="agenda" class="section reveal">
+        <h2>Agenda</h2>
+        <ul class="agenda-list" id="agenda-list"></ul>
+      </section>
+
+      <!-- OUÇA -->
+      <section id="ouca" class="section reveal">
+        <h2>Ouça</h2>
+        <!-- <div class="platforms reveal reveal-left">
+          <a
+            class="spotify-btn"
+            href="https://open.spotify.com/intl-pt/artist/2XCAdsUHRbY7t4qwhkZnX8"
+            target="_blank"
+            rel="noopener">
+            <span class="icon spotify-icon"></span>
+            Ouvir Jonny Alvez no Spotify
+          </a>
+        </div> -->
+
+        <div class="spotify-embed">
+          <iframe
+            style="border-radius: 12px"
+            src="https://open.spotify.com/embed/artist/2XCAdsUHRbY7t4qwhkZnX8"
+            width="100%"
+            height="452"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+      </section>
+
+      <!-- VIDEOS -->
+      <section id="videos" class="section reveal">
+        <h2>YouTube</h2>
+
+        <div class="videos-grid">
+          <div
+            class="video-card reveal reveal-delay-1"
+            data-video-id="s4NOmkvg6bc">
+            <img />
+            <div class="play-overlay"></div>
+          </div>
+
+          <div
+            class="video-card reveal reveal-delay-2"
+            data-video-id="UuBXu7kGy38">
+            <img />
+            <div class="play-overlay"></div>
+          </div>
+
+          <div
+            class="video-card reveal reveal-delay-2"
+            data-video-id="nC_rZP1zgEk">
+            <img />
+            <div class="play-overlay"></div>
+          </div>
+
+          <div
+            class="video-card reveal reveal-delay-2"
+            data-video-id="C7WGoO_bhrI">
+            <img />
+            <div class="play-overlay"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESSE SOU EU -->
+      <section id="sobre" class="section reveal reveal-right sobre-section">
+        <h2 class="sobre-title">Esse sou eu</h2>
+
+        <div class="sobre-grid">
+          <div class="sobre-foto">
+            <img src="assets/images/sobre.png" alt="Jonny Alvez" />
+          </div>
+
+          <div class="sobre-texto">
+            <p class="impact-phrase">
+              A música sempre foi o lugar onde eu consegui ser inteiro.
+            </p>
+
+            <div class="divider"></div>
+
+            <p>
+              Eu sou Jonny Alvez. Cresci entre acordes, silêncios e sentimentos
+              que nunca couberam em poucas palavras. A música virou refúgio,
+              depois linguagem, depois caminho.
+            </p>
+
+            <p>
+              Minhas canções falam sobre amor, intensidade, erros, recomeços e
+              tudo aquilo que a gente sente, mas quase nunca sabe explicar. No
+              palco, eu não interpreto — eu vivo cada verso.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTATO -->
+      <section id="contato" class="section reveal contato-section">
+        <h2>Contato</h2>
+
+        <div class="social-links">
+          <a
+            href="https://wa.me/5531992988375"
+            target="_blank"
+            rel="noopener"
+            class="social whatsapp">
+            <span class="icon whatsapp-icon"></span>
+            Falar no WhatsApp
+          </a>
+
+          <a
+            href="https://www.instagram.com/jonnyalvez/"
+            target="_blank"
+            rel="noopener"
+            class="social instagram">
+            <span class="icon instagram-icon"></span>
+            Instagram
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@jonnyalvez"
+            target="_blank"
+            rel="noopener"
+            class="social tiktok">
+            <span class="icon tiktok-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12.4 2h3.1c.2 1.7 1.2 3.2 2.7 4.1 1 .6 2.1 1 3.3 1.1v3.2c-1.9.1-3.8-.4-5.3-1.4v6.5c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .9 0 1.3.1v3.3c-.4-.2-.8-.3-1.3-.3-1.5 0-2.7 1.2-2.7 2.7s1.2 2.7 2.7 2.7 2.7-1.2 2.7-2.7V2z" />
+              </svg>
+            </span>
+            TikTok
+          </a>
+
+          <a
+            href="https://www.facebook.com/alvezjonny"
+            target="_blank"
+            rel="noopener"
+            class="social facebook">
+            <span class="icon facebook-icon"></span>
+            Facebook
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© Jonny Alvez</span>
+
+      <span class="developerby">
+        site desenvolvido por
+        <a href="https://iugorsette.vercel.app" target="_blank">
+          Iugor Sette
+        </a>
+      </span>
+    </footer>
+
+    <script src="main.js" defer></script>
+  </body>
+</html>
