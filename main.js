@@ -88,23 +88,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderAgenda(events) {
-  const container = document.getElementById('agenda-list')
+    const container = document.getElementById('agenda-list')
 
-  const hoje = todayAsComparable()
+    const hoje = todayAsComparable()
 
-  const futuros = events
-    .filter(e => parseDate(e.date) >= hoje)
-    .sort((a, b) => parseDate(a.date).localeCompare(parseDate(b.date)))
+    const futuros = events
+      .filter((e) => parseDate(e.date) >= hoje)
+      .sort((a, b) => parseDate(a.date).localeCompare(parseDate(b.date)))
 
-  if (!futuros.length) {
-    container.innerHTML = '<li>Nenhuma data anunciada.</li>'
-    return
-  }
+    if (!futuros.length) {
+      container.innerHTML = '<li>Nenhuma data anunciada.</li>'
+      return
+    }
 
-  const highlightId = futuros[0].id
+    const highlightId = futuros[0].id
 
-  container.innerHTML = futuros
-    .map(event => `
+    container.innerHTML = futuros
+      .map(
+        (event) => `
       <li class="agenda-item ${event.id === highlightId ? 'highlight' : ''}">
         <span class="agenda-date">
           ${formatDate(event.date)}
@@ -121,10 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
             : ''
         }
       </li>
-    `)
-    .join('')
-}
-
+    `
+      )
+      .join('')
+  }
 
   function parseDate(date) {
     const [day, month, year] = date.split('/')
@@ -151,4 +152,71 @@ document.addEventListener('DOMContentLoaded', () => {
 
     return `${day} ${meses[Number(month) - 1]}`
   }
+
+  const container = document.querySelector('.sobre-foto')
+  const img = container.querySelector('img')
+  const canvas = container.querySelector('canvas')
+  const ctx = canvas.getContext('2d')
+
+  const colorImage = new Image()
+  colorImage.src = img.src
+
+  function resize() {
+    canvas.width = container.offsetWidth
+    canvas.height = container.offsetHeight
+
+    drawMask()
+  }
+
+  function drawMask() {
+    // limpa
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    // desenha imagem colorida
+    ctx.drawImage(colorImage, 0, 0, canvas.width, canvas.height)
+
+    // cobre tudo com máscara
+    ctx.globalCompositeOperation = 'destination-in'
+    ctx.fillStyle = '#000'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    
+    ctx.globalCompositeOperation = 'destination-out'
+  }
+
+  colorImage.onload = resize
+  window.addEventListener('resize', resize)
+
+  // brush orgânico acumulativo
+  function reveal(x, y) {
+    for (let i = 0; i < 6; i++) {
+      const radius = 18 + Math.random() * 14
+      const ox = (Math.random() - 0.5) * 20
+      const oy = (Math.random() - 0.5) * 20
+
+      ctx.beginPath()
+      ctx.arc(x + ox, y + oy, radius, 0, Math.PI * 2)
+      ctx.fill()
+    }
+  }
+
+  // mouse
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    reveal(x, y)
+  })
+
+  // touch
+  container.addEventListener(
+    'touchmove',
+    (e) => {
+      const rect = container.getBoundingClientRect()
+      const touch = e.touches[0]
+
+      reveal(touch.clientX - rect.left, touch.clientY - rect.top)
+    },
+    { passive: true }
+  )
 })
